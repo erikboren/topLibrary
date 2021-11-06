@@ -2,16 +2,25 @@
 let myLibrary = [];
 const bookContainer = document.querySelector(".bookContainer");
 const sortButtons = document.querySelectorAll(".sortButton");
+var modal = document.getElementById("myModal");
+var modalClose = document.querySelector(".modalClose");
+
+
 let sortBy = 'author';
 
-// create "add card"
+modalClose.onclick = function(){
+    modal.style.display = "none";
+};
+
 const addCard = document.createElement('div');
 addCard.classList.add("bookCard");
-const plusButton = document.createElement("i");
+const plusButton = document.createElement("div");
 plusButton.classList.add("fas", "fa-plus", "plusButton");
+plusButton.onclick = function(){
+    modal.style.display = 'block';
+};
 
 addCard.appendChild(plusButton);
-
 
 
 class Book {
@@ -57,7 +66,7 @@ myLibrary.push(new Book('Gunde Svan som ursprungsamerikan','Mikael Holmquist', 2
 myLibrary.push(new Book('Stackars Birger','Martina Montelius', 305,true));
 myLibrary.push(new Book('Handbok för pensionärer','Gunnar Jägberg', 236,true));
 
-
+// Refreshes the container and adds all books as cards
 
 const refreshBookContainer = function(){
     clearBookContainer();
@@ -104,4 +113,6 @@ const addSortButton = function(sortButton){
 };
 
 sortButtons.forEach(sortButton => addSortButton(sortButton));
+
+
 

@@ -43,9 +43,12 @@ h1{
 }
 
 .plusButton{
-  font-size: 3em;
+  font-size: 4em;
   color:#FFFFFB;
-  margin:auto;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
 }
 
 
@@ -56,7 +59,6 @@ h1{
   align-content: flex-start;
   border-radius: 1em;
   gap: 0.8em;
-  /* padding: 0.8em; */
 } 
 
 .bookCard{
@@ -76,3 +78,39 @@ top: -0.1em;
 color: #E12836;
 }
 
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 8em;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0,4);
+}
+
+.modalContent{
+  background-color: #fefefe;
+  margin: auto;
+  padding: 1.5em;
+  border: 1px solid #888;
+  width: 25%;
+  border-radius: 1em;
+  color: #6E6E6E;
+}
+
+.modalClose{
+  color: #aaaaaa;
+  float: right;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.modalClose:hover,
+.modalClose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
