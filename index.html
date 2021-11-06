@@ -6,17 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   </head>
   <body>
     <div class="header">
         <h1>Library</h1>
-    </div>
-    <div class="mainContainer">
-        <div class="bookContainer">
-           
+        <div class="controlDiv">
+          <i class="fas fa-grip-horizontal displayButton"> </i>
+          <i class="fas fa-table displayButton"></i>
+          Sort by: 
+          <button class="sortButton">Author</button>
+          <button class="sortButton">Title</button>
+          <button class="sortButton">Pages</button>
+          <button class="sortButton">Read</button>
         </div>
-        <div class="sidePanel"></div>
     </div>
+    <div class="bookContainer"></div>
+        
+    
 	<script src="index.js"></script>
   </body>
 </html>

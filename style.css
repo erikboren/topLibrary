@@ -3,49 +3,76 @@
   margin: 0;
 }
 
+
+body{
+  width:94em;
+  margin:auto;
+  background-color: #364F6B;
+  color: #FFFFFB;
+  font-family: sans-serif;
+}
+
+
+
 .header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-left: 0.8em;
+  text-align: center;
 }
 
 h1{
-  margin-left:0;
+  color:#F5F5F5;
 }
 
-.mainContainer {
-  display: flex;
-  margin-left: 0.8em;
-  margin-right: 5em;
-  gap: 5em;
-  justify-content: flex-start;
-  align-items: flex-start;
+.controlDiv{
+  display:table;
+  line-height:36.8px;
 }
+
+.displayButton{
+  margin-right: 0.5em;
+  font-size: 1.5em;
+}
+
+.sortButton{
+  background-color: brown;
+  color: #FEF5ED;
+  
+}
+
+.plusButton{
+  font-size: 3em;
+  color:#FFFFFB;
+  margin:auto;
+}
+
 
 .bookContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-start;
-  width: 94em;
   border-radius: 1em;
-  background-color: black;
   gap: 0.8em;
-  padding: 0.8em;
+  /* padding: 0.8em; */
 } 
 
 .bookCard{
   border-radius: 0.4em;
   width: 13.4em;
   height: 14em;
-  background-color: aliceblue;
+  background-color: #393E46;
   padding: 0.8em;
-}
-
-.sidePanel{
-  flex:none;
-  background-color: blueviolet;
-  border-radius: 1em;
-  width: 18em;
-  padding: 0.8em;
-  height: 50em;
+  position: relative;
   
 }
+
+.deleteButton{
+position: absolute;
+right:-0.1em;
+top: -0.1em;
+color: #E12836;
+}
+

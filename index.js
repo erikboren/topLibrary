@@ -1,16 +1,52 @@
+/*jshint esversion: 6 */
 let myLibrary = [];
 const bookContainer = document.querySelector(".bookContainer");
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+const sortButtons = document.querySelectorAll(".sortButton");
+let sortBy = 'author';
+
+// create "add card"
+const addCard = document.createElement('div');
+addCard.classList.add("bookCard");
+const plusButton = document.createElement("i");
+plusButton.classList.add("fas", "fa-plus", "plusButton");
+
+addCard.appendChild(plusButton);
+
+
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
-function addBookToLibrary(book){
+function addBookToLibrary(title,author,pages, read){
+    const book = new Book(title,author,pages,read);
     myLibrary.push(book);
+    sortLibrary(sortBy);
+    
 }
 
+const sortLibrary = function(sortBy){
+    switch (sortBy){
+        case 'author':
+        case 'title':
+            myLibrary.sort((a,b) => a[sortBy] > b[sortBy] ? 1 : -1);
+            break;
+        case 'read':
+        case 'pages':
+            myLibrary.sort((a,b) => a[sortBy] > b[sortBy] ? -1 : 1);
+            break;
+
+        default:
+            
+    }
+    
+    refreshBookContainer();
+};
 // Sample books:
 
 myLibrary.push(new Book('Count of Monte Cristo','Alexandre Dumas', 1312,true));
@@ -21,22 +57,51 @@ myLibrary.push(new Book('Gunde Svan som ursprungsamerikan','Mikael Holmquist', 2
 myLibrary.push(new Book('Stackars Birger','Martina Montelius', 305,true));
 myLibrary.push(new Book('Handbok för pensionärer','Gunnar Jägberg', 236,true));
 
-myLibrary.sort((a,b) => a > b ? 1 : -1);
+
 
 const refreshBookContainer = function(){
-    clearBookContainer()
+    clearBookContainer();
     myLibrary.forEach(book => createBookCard(book));
-}
+    bookContainer.appendChild(addCard);
+};
 
 const clearBookContainer = function(){
     bookContainer.innerHTML = "";
-}
+};
 
 const createBookCard = function(book){
     const bookCard = document.createElement("div");
-    bookCard.innerHTML = book.title + ", " + book.author;
+    bookCard.innerHTML = book.title + "<br>" + book.author + "<br>" + book.pages + "<br>" + book.read ;
     bookCard.classList.add("bookCard");
+    
+    const deleteButton = document.createElement("div");
+    deleteButton.classList.add("fas", "fa-times-circle", "fa-2x", "deleteButton");
+    deleteButton.addEventListener('click',function(){
+        const index = myLibrary.findIndex(bookb => bookb === book);
+        console.log(index);
+        myLibrary.splice(index,1);
+        refreshBookContainer();
+    });
+    bookCard.appendChild(deleteButton);
+    
     bookContainer.appendChild(bookCard);
-}
+};
 
+sortLibrary(sortBy);
 refreshBookContainer();
+
+const deleteBook = function(index){
+    myLibrary.pop(index);
+    refreshBookContainer();
+};
+
+const addSortButton = function(sortButton){
+    sortButton.addEventListener('click', function(){
+        sortBy = sortButton.innerHTML.toLowerCase();
+        sortLibrary(sortBy);
+        console.log(sortBy);
+    });
+};
+
+sortButtons.forEach(sortButton => addSortButton(sortButton));
+
