@@ -87,7 +87,6 @@ const createBookCard = function(book){
     deleteButton.classList.add("fas", "fa-times-circle", "fa-2x", "deleteButton");
     deleteButton.addEventListener('click',function(){
         const index = myLibrary.findIndex(bookb => bookb === book);
-        console.log(index);
         myLibrary.splice(index,1);
         refreshBookContainer();
     });
@@ -108,7 +107,6 @@ const addSortButton = function(sortButton){
     sortButton.addEventListener('click', function(){
         sortBy = sortButton.innerHTML.toLowerCase();
         sortLibrary(sortBy);
-        console.log(sortBy);
     });
 };
 

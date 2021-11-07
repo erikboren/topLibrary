@@ -5,7 +5,7 @@
 
 
 body{
-  width:94em;
+  width:75%;
   margin:auto;
   background-color: #364F6B;
   color: #FFFFFB;
@@ -94,18 +94,22 @@ color: #E12836;
 .modalContent{
   background-color: #fefefe;
   margin: auto;
-  padding: 1.5em;
+  padding: 1em;
   border: 1px solid #888;
   width: 25%;
   border-radius: 1em;
   color: #6E6E6E;
+  position:relative;
 }
 
 .modalClose{
   color: #aaaaaa;
-  float: right;
+  position: absolute;
   font-size: 1.8em;
   font-weight: bold;
+  right:0.5em;
+  top:0.5em;
+  transform: translate(50%, -50%);
 }
 
 .modalClose:hover,
@@ -113,4 +117,21 @@ color: #E12836;
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+input {
+  width:100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#submitButton{
+  position:absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+}
+
+#readInput{
+  width: 10%;
 }
