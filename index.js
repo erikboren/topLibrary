@@ -4,13 +4,16 @@ const bookContainer = document.querySelector(".bookContainer");
 const sortButtons = document.querySelectorAll(".sortButton");
 var modal = document.getElementById("myModal");
 var modalClose = document.querySelector(".modalClose");
+const submitButton = document.getElementById("submitButton");
+const authorField = document.getElementById("authorField");
+const titleField = document.getElementById("titleField");
+const pagesField = document.getElementById("pagesField");
+const readField = document.getElementById("readField");
 
 
 let sortBy = 'author';
 
-modalClose.onclick = function(){
-    modal.style.display = "none";
-};
+
 
 const addCard = document.createElement('div');
 addCard.classList.add("bookCard");
@@ -19,6 +22,11 @@ plusButton.classList.add("fas", "fa-plus", "plusButton");
 plusButton.onclick = function(){
     modal.style.display = 'block';
 };
+
+modalClose.onclick = function(){
+    modal.style.display = "none";
+};
+
 
 addCard.appendChild(plusButton);
 
@@ -112,5 +120,27 @@ const addSortButton = function(sortButton){
 
 sortButtons.forEach(sortButton => addSortButton(sortButton));
 
+submitButton.onclick = function(){
+    const title = titleField.value;
+    const author = authorField.value;
+    const pages = pagesField.value;
+    const read = readField.checked;
+
+    addBookToLibrary(title,author,pages,read);
+
+    modal.style.display = "none";
+
+    nullInputs();
 
 
+
+};
+
+const nullInputs = function(){
+    titleField.value = null;
+    authorField.value = null;
+    pagesField.value = null;
+    readField.checked = null;
+};
+
+nullInputs();
