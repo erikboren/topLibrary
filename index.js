@@ -91,14 +91,24 @@ const clearBookContainer = function () {
 
 const createBookCard = function (book) {
   const bookCard = document.createElement("div");
-  bookCard.innerHTML =
-    book.title +
-    "<br>" +
-    book.author +
-    "<br>" +
-    book.pages +
-    "<br>" +
-    book.read;
+  
+  const cardTitle = document.createElement("h3");
+  const cardAuthor = document.createElement("h3");
+  const cardPages = document.createElement("h3");
+  const cardRead = document.createElement("h3");
+  
+  cardTitle.textContent = `"${book.title}"`;
+  cardAuthor.textContent = `${book.author}`;
+  cardPages.textContent = `${book.pages}  pages`;
+  cardRead.textContent = (book.read == true ? "Have read" : "Have not read");
+  
+
+  bookCard.appendChild(cardTitle);
+  bookCard.appendChild(cardAuthor);
+  bookCard.appendChild(cardPages);
+  bookCard.appendChild(cardRead);
+   
+   
   bookCard.classList.add("bookCard");
 
   const deleteButton = document.createElement("div");

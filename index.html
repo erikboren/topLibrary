@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    
     <!-- modal -->
     <div class="modal" id="myModal">
       <div class="modalContent">
         <span class="modalClose">&times</span>
         <h2>Add book to library</h2>
-        <p>Title: <input id="titleField" placeholder="Title.."></p>
-        <p>Author: <input id="authorField" placeholder="Author.."></p>
-        <p>Pages: <input type="number" id="pagesField" placeholder="Number of pages.."></p>
-        <p>Read: <input type="checkbox" id="readField">
+        <p>Title: <input id="titleField" placeholder="Title.." /></p>
+        <p>Author: <input id="authorField" placeholder="Author.." /></p>
+        <p>
+          Pages:
+          <input
+            type="number"
+            id="pagesField"
+            placeholder="Number of pages.."
+          />
+        </p>
+        <p>
+          Read: <input type="checkbox" id="readField" />
 
-        <button id="submitButton">Add book</button>
+          <button id="submitButton">Add book</button>
+        </p>
       </div>
-
     </div>
-    
-    
+
     <!-- end modal -->
     <div class="header">
-        <h1>Library</h1>
-        <div class="controlDiv">
-          <i class="fas fa-grip-horizontal displayButton"> </i>
-          <i class="fas fa-table displayButton"></i>
-          Sort by: 
-          <button class="sortButton">Author</button>
-          <button class="sortButton">Title</button>
-          <button class="sortButton">Pages</button>
-          <button class="sortButton">Read</button>
-        </div>
+      <h1>Library</h1>
+      <div class="controlDiv">
+        <i class="fas fa-grip-horizontal displayButton"> </i>
+        <i class="fas fa-table displayButton"></i>
+        Sort by:
+        <button class="sortButton">Author</button>
+        <button class="sortButton">Title</button>
+        <button class="sortButton">Pages</button>
+        <button class="sortButton">Read</button>
+      </div>
     </div>
     <div class="bookContainer"></div>
-        
-    
-	<script src="index.js"></script>
+
+    <script src="index.js"></script>
   </body>
 </html>
