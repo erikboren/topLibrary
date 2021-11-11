@@ -25,6 +25,7 @@ h1 {
 
 h3 {
   flex:auto;
+  margin-right: 0.5em;
 }
 
 .controlDiv {
@@ -65,18 +66,31 @@ h3 {
   width: 13.4em;
   height: 14em;
   background-color: #393e46;
-  padding: 0.8em;
   position: relative;
   display: flex;
-  align-content: space-around;
+  align-content: space-between;
   flex-direction: column;
+  padding: 0.5em;
+}
+
+.readButton{
+  width: 110px;
+  background-color: #34BE82;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 1.5em;
+}
+
+.notRead{
+  background-color: #950101;
 }
 
 .deleteButton {
   position: absolute;
-  right: -0.1em;
-  top: -0.1em;
+  right: -0.2em;
+  top: -0.2em;
   color: #e12836;
+  z-index: 1;
 }
 
 .modal {
