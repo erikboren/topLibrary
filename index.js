@@ -10,137 +10,144 @@ const titleField = document.getElementById("titleField");
 const pagesField = document.getElementById("pagesField");
 const readField = document.getElementById("readField");
 
+let sortBy = "author";
 
-let sortBy = 'author';
-
-
-
-const addCard = document.createElement('div');
+const addCard = document.createElement("div");
 addCard.classList.add("bookCard");
 const plusButton = document.createElement("div");
 plusButton.classList.add("fas", "fa-plus", "plusButton");
-plusButton.onclick = function(){
-    modal.style.display = 'block';
+plusButton.onclick = function () {
+  modal.style.display = "block";
 };
 
-modalClose.onclick = function(){
-    modal.style.display = "none";
+modalClose.onclick = function () {
+  modal.style.display = "none";
 };
-
 
 addCard.appendChild(plusButton);
 
-
 class Book {
-    constructor(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-    }
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
-function addBookToLibrary(title,author,pages, read){
-    const book = new Book(title,author,pages,read);
-    myLibrary.push(book);
-    sortLibrary(sortBy);
-    
+function addBookToLibrary(title, author, pages, read) {
+  const book = new Book(title, author, pages, read);
+  myLibrary.push(book);
+  sortLibrary(sortBy);
 }
 
-const sortLibrary = function(sortBy){
-    switch (sortBy){
-        case 'author':
-        case 'title':
-            myLibrary.sort((a,b) => a[sortBy] > b[sortBy] ? 1 : -1);
-            break;
-        case 'read':
-        case 'pages':
-            myLibrary.sort((a,b) => a[sortBy] > b[sortBy] ? -1 : 1);
-            break;
+const sortLibrary = function (sortBy) {
+  switch (sortBy) {
+    case "author":
+    case "title":
+      myLibrary.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1));
+      break;
+    case "read":
+    case "pages":
+      myLibrary.sort((a, b) => (a[sortBy] > b[sortBy] ? -1 : 1));
+      break;
 
-        default:
-            
-    }
-    
-    refreshBookContainer();
+    default:
+  }
+
+  refreshBookContainer();
 };
 // Sample books:
 
-myLibrary.push(new Book('Count of Monte Cristo','Alexandre Dumas', 1312,true));
-myLibrary.push(new Book('Don Quijote','Miguel De Servantes Saavedra', 935,false));
-myLibrary.push(new Book('Elda i vedspis','Peder Edvinsson', 349,true));
-myLibrary.push(new Book('Master and Margarita','Mikhail Bulgakov', 464,false));
-myLibrary.push(new Book('Gunde Svan som ursprungsamerikan','Mikael Holmquist', 208,true));
-myLibrary.push(new Book('Stackars Birger','Martina Montelius', 305,true));
-myLibrary.push(new Book('Handbok för pensionärer','Gunnar Jägberg', 236,true));
+myLibrary.push(
+  new Book("Count of Monte Cristo", "Alexandre Dumas", 1312, true)
+);
+myLibrary.push(
+  new Book("Don Quijote", "Miguel De Servantes Saavedra", 935, false)
+);
+myLibrary.push(new Book("Elda i vedspis", "Peder Edvinsson", 349, true));
+myLibrary.push(
+  new Book("Master and Margarita", "Mikhail Bulgakov", 464, false)
+);
+myLibrary.push(
+  new Book("Gunde Svan som ursprungsamerikan", "Mikael Holmquist", 208, true)
+);
+myLibrary.push(new Book("Stackars Birger", "Martina Montelius", 305, true));
+myLibrary.push(
+  new Book("Handbok för pensionärer", "Gunnar Jägberg", 236, true)
+);
 
 // Refreshes the container and adds all books as cards
 
-const refreshBookContainer = function(){
-    clearBookContainer();
-    myLibrary.forEach(book => createBookCard(book));
-    bookContainer.appendChild(addCard);
+const refreshBookContainer = function () {
+  clearBookContainer();
+  myLibrary.forEach((book) => createBookCard(book));
+  bookContainer.appendChild(addCard);
 };
 
-const clearBookContainer = function(){
-    bookContainer.innerHTML = "";
+const clearBookContainer = function () {
+  bookContainer.innerHTML = "";
 };
 
-const createBookCard = function(book){
-    const bookCard = document.createElement("div");
-    bookCard.innerHTML = book.title + "<br>" + book.author + "<br>" + book.pages + "<br>" + book.read ;
-    bookCard.classList.add("bookCard");
-    
-    const deleteButton = document.createElement("div");
-    deleteButton.classList.add("fas", "fa-times-circle", "fa-2x", "deleteButton");
-    deleteButton.addEventListener('click',function(){
-        const index = myLibrary.findIndex(bookb => bookb === book);
-        myLibrary.splice(index,1);
-        refreshBookContainer();
-    });
-    bookCard.appendChild(deleteButton);
-    
-    bookContainer.appendChild(bookCard);
+const createBookCard = function (book) {
+  const bookCard = document.createElement("div");
+  bookCard.innerHTML =
+    book.title +
+    "<br>" +
+    book.author +
+    "<br>" +
+    book.pages +
+    "<br>" +
+    book.read;
+  bookCard.classList.add("bookCard");
+
+  const deleteButton = document.createElement("div");
+  deleteButton.classList.add("fas", "fa-times-circle", "fa-2x", "deleteButton");
+  deleteButton.addEventListener("click", function () {
+    const index = myLibrary.findIndex((bookb) => bookb === book);
+    myLibrary.splice(index, 1);
+    refreshBookContainer();
+  });
+  bookCard.appendChild(deleteButton);
+
+  bookContainer.appendChild(bookCard);
 };
 
 sortLibrary(sortBy);
 refreshBookContainer();
 
-const deleteBook = function(index){
-    myLibrary.pop(index);
-    refreshBookContainer();
+const deleteBook = function (index) {
+  myLibrary.pop(index);
+  refreshBookContainer();
 };
 
-const addSortButton = function(sortButton){
-    sortButton.addEventListener('click', function(){
-        sortBy = sortButton.innerHTML.toLowerCase();
-        sortLibrary(sortBy);
-    });
+const addSortButton = function (sortButton) {
+  sortButton.addEventListener("click", function () {
+    sortBy = sortButton.innerHTML.toLowerCase();
+    sortLibrary(sortBy);
+  });
 };
 
-sortButtons.forEach(sortButton => addSortButton(sortButton));
+sortButtons.forEach((sortButton) => addSortButton(sortButton));
 
-submitButton.onclick = function(){
-    const title = titleField.value;
-    const author = authorField.value;
-    const pages = pagesField.value;
-    const read = readField.checked;
+submitButton.onclick = function () {
+  const title = titleField.value;
+  const author = authorField.value;
+  const pages = pagesField.value;
+  const read = readField.checked;
 
-    addBookToLibrary(title,author,pages,read);
+  addBookToLibrary(title, author, pages, read);
 
-    modal.style.display = "none";
+  modal.style.display = "none";
 
-    nullInputs();
-
-
-
+  nullInputs();
 };
 
-const nullInputs = function(){
-    titleField.value = null;
-    authorField.value = null;
-    pagesField.value = null;
-    readField.checked = null;
+const nullInputs = function () {
+  titleField.value = null;
+  authorField.value = null;
+  pagesField.value = null;
+  readField.checked = null;
 };
 
 nullInputs();
