@@ -114,6 +114,7 @@ h3 {
   border-radius: 1em;
   color: #6e6e6e;
   position: relative;
+  z-index: 1;
 }
 
 .modalClose {
